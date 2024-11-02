@@ -1,20 +1,18 @@
 import tkinter as tk
 from tkinter import scrolledtext
-import main
+from main import get_response
 
 def send_to_ai():
     philosopher_name = philosopher_name_entry.get()
     philosopher_text = philosopher_text_entry.get("1.0", tk.END)
     user_question = user_question_entry.get("1.0", tk.END)
     
-    # Replace placeholders with actual input
-    message_content = main.message.content.replace("{{PHILOSOPHER_NAME}}", philosopher_name)
-    message_content = message_content.replace("{{PHILOSOPHER_TEXT}}", philosopher_text)
-    message_content = message_content.replace("{{USER_QUESTION}}", user_question)
+    # Get the response from the AI
+    response = get_response(philosopher_name, philosopher_text, user_question)
     
     # Display the response in the text area
     response_text_area.delete("1.0", tk.END)
-    response_text_area.insert(tk.END, message_content)
+    response_text_area.insert(tk.END, response)
 
 # Create the main window
 root = tk.Tk()
