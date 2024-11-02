@@ -1,11 +1,14 @@
 import anthropic
-import keys
 import os
+import config  # Import the config file
+
+# Ensure the API key is set correctly
+api_key = config.ANTHROPIC_API_KEY
 
 client = anthropic.Anthropic(
-    # defaults to os.environ.get("ANTHROPIC_API_KEY")
-    api_key="my_api_key",
+    api_key=api_key,
 )
+
 
 # Replace placeholders like {{PHILOSOPHER_NAME}} with real values,
 # because the SDK does not support variables.
